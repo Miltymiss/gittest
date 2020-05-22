@@ -1,0 +1,32 @@
+在线学习API
+项目设计
+一、概述
+项目基于springboot进行实现，使用了mybatis,redis,oauth2,ratelimit，hateoas，cache等技术进行开发。项目充分体现了spring框架的
+IOC和AOP特性，对于类的调用大量使用依赖注入进行实现，实现了对资源的授权管理，对不同用户的速度限制，以及对API的生成。
+在功能模块上项目分为Oauth2服务器模块，课程查询模块、资源管理模块、限制模块、数据库等。
+二、模块实现
+1、数据库模块
+数据库模块使用mybatis与mysql进行交互，灵活运用普通sql语句和存储过程，实现对类目的增删改查。同时通过异常验证确保数据操作的安全。
+2、Oauth2模块
+通过对UserDetail的部分重写实现定制化的权限管理，通过相应配置对不同url采取不同的管理策略
+3、课程查询模块
+通过对持久层逻辑层的结合调用，以及对数据的装配，同时通过hateoas增强前端对API的适应性。
+4、Redis模块
+以redis作为缓存空间，以及token的存储
+5、限制模块
+通过bucket4j进行流量控制，通过Spring security进行用户权限控制。
+6、测试模块
+利用springboottest 进行单元测试
+三、使用技术
+后端：
+·Springboot
+·Aspect
+·Mybatis
+·Redis
+·Mysql
+·Hateoas
+·cache
+·Oauth2
+·OpenAPI
+项目API：
+运行项目后访问：http://localhost:8080/swagger-ui.html
